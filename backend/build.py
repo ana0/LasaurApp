@@ -8,7 +8,7 @@ import os, sys, subprocess, shutil
 # Make sure you have the Arduino IDE installed (we've tested this on 022 and newer).
 # While build.py does not use the IDE directly it makes use of its tool chain.
 # On Linux all you need is the "arduino-core" package.
-# Please verify the following locations are correct for you platform:
+# Please verify the following locations are correct for your platform:
 
 if sys.platform == "darwin":  # OSX
     AVRDUDEAPP    = "/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/avrdude"
