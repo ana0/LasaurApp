@@ -46,6 +46,7 @@
                     <ul class="nav">
                         <li><a href="#about_modal" data-toggle="modal">About</a></li>
                         <li><a href="#ttl_modal" data-toggle="modal">TTL</a></li>  
+                        <li><a href="#speeds_modal" data-toggle="modal">Cutting Speeds</a></li>  
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manual<b class="caret"></b></a>
@@ -95,10 +96,268 @@
     <div id="ttl_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ttl_label" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="ttl_label">TTL Lasersaur Rulez</h3>
+            <h3 id="ttl_label">Toronto Tool Library laser guidelines</h3>
         </div>
         <div class="modal-body">
-            <p>Tool Library custom text goes here.</p>
+            <h3>Note – You cannot use the laser if you haven’t taken the maintenance workshop.</h3><br>
+            <strong>Table of contents</strong>
+            <ol><li><a href="#startingup">Starting Up</a></li>
+            <li><a href="#startingajob">Starting a Job</a></li>
+            <li><a href="#positioning">Positioning of Job/Design</a></li>
+            <li><a href="#dpiandresolution">Dpi settings and resolution</a></li></ol><br>
+            <strong>Troubleshooting</strong>
+            <ol><li><a href="#connectionproblems">Problems connecting</a></li>
+            <li><a href="#cuttingproblems">Problems with cutting</a></li></ol>
+            <br>
+            <a name="startingup"><h3>Starting Up</h3></a>
+            <br>
+            <p>Make sure you turn on the laser and the FAN before anything else. This is done with the plug on the “vortex” fan in the back workshop being plugged in and the power bar to the right of the laser being turned on. Red emergency button should be pressed in for this.</p>
+            <p>Make sure to “ZERO” the x-axis bar or gantry into the back when the laser is OFF, meaning no lights are on. When you are ready, keep your left hand on the x-axis bar and rotate the emergency button clockwise to turn on the laser cutter. That should zero the laser and make sure it cuts properly.</p>
+            <p>Next, open your laptop and access you browser, i.e. Firefox, chrome, explorer, safari, etc. (NOTE* safari cannot run the lasersaur app in most cases because it doesn’t have API capabilities… Don’t ask)</p>
+            <p>Login to the Laser with the IP address <strong>192.168.2.199</strong> typed into the address bar.</p>
+            <p>Should look like this:</p>
+            <p><img src="/img/laserapp-screenshot.png"></p>
+            <p><img src="/img/door-disconnected.png"></p>
+            <p>Except it will be green and say connected instead.</p>
+            <p>If you are already on the lasersaur app, remember that the lasersaur app needs a few seconds to flash to the IP Address and be accessible.</p>
+            <br>
+            <a name="startingajob"><h3>Starting a Job</h3></a>
+            <br>
+            <p>You should now be able to get a file loading into the lasersaur app.</p>
+            <p>Click the “File Import” button like this:</p>
+            <p><img src="/img/file-import.png"></p>
+            <p>And import your designs as an .svg or .dxf file.</p>
+            <p>If you're exporting a .dxf, it needs to be the oldest version, R14, with all elements in the file only being lines and arcs. When exporting from Rhino, the "“file export” – “edit schemes” window should look like this:</p>
+            <p><img src="/img/autocad-export.png"></p>
+            <p>AutoCAD, solidworks, freeCAD, sketchup, and many more can do it also. Type it in google to find out. Inkscape is the next best solution because it can change most files into .svg’s, which always work.</p>
+            <br>
+            <a name="positioning"><h3>Positioning a Job/Design</h3></a>
+            <br>
+            <p>The design/art/lines/whatever you put into the lasersaur app will be placed wherever your job was saved in the design software. All design software has 0,0 origins that indicate a reference point from which all the work revolves around. In most software there is an option to move the design to the origin. This won’t help because the laser needs an origin at the top left of wherever the design is. See the picture below:</p>
+            <p><img src="/img/position-guidelines.png"></p>
+            <p>In Inkscape, if you want to represent the whole cutting area of the laser in your drawing you can follow the picture below after going to “File” – “document properties” and changing the Width = 48 and Height = 24. This means 48” by 24” or 4’ by 2’.</p>
+            <p><img src="/img/inkscape-filesize.png"></p>
+            <p>You can also click “Resize page to drawing or selection”. This will create a page the same size as your design. This works well for centering design over pre-determined material dimensions that the design will fit into. Or, if you material is larger, type in the dimensions into Width and Height boxes provided in the document properties window. Centre the design over the material like in the image below using the right angle edge provided at the top and left side of the lasers bed area.</p>
+            <p>Also, if that doesn’t position it the way you need to, you can always use Move/Jog Tab that looks like this:</p>
+            <p><img src="/img/move-jog-button.png"></p>
+            <p>In this window you can use powerful commands that relocate you “ZERO” to wherever you need it. This feature works well in the event that your “as build material” is either:</p>
+            <ul><li>Too thick and must be placed in between the frame underneath the honeycomb bed</li>
+            <li>Is already cut in the top left area</li>
+            <li>Is weathered or damaged in the top left area</li>
+            <li>Need touch ups only in areas not cut the first time</li></ul>
+            <p>Click on the Move/Job tab on the left and then using the cursor over the boxed area, click in the area you would like to work in. Alternatively, you can shift click that area or use your directional pad on your laptop to move the laser lens where you want. Each click gets you 10 mm distance.</p>
+            <p><img src="/img/manual-alignment-screen.png"></p>
+            <p>Make sure the button “move” is selected at the bottom of the “Move/Job” tab when making an offset move. Offset move means that you are offsetting the “ZERO” from the top left corner to a location more desirable.</p>
+            <p>Notice in the picture below the dotted lines indicate the new edge for both top and left side of the cutting area:</p>
+            <p><img src="/img/offset.png"></p>
+            <p>When clicking or using the directional pad to get you the desired area, you will need to select “offset to” which looks like this:</p>
+            <p><img src="/img/offset-button.png"></p>
+            <p>Only click after the lens has reached the desired position and waited 5 seconds. This is a necessary update time for the laser.</p>
+            <br>
+            <a name="dpiandresolution"><h3>Dpi settings and resolution</h3></a>
+            <br>
+            <p>When setting your dpi (dotted per inch) in the design, make sure it is either 72, 90 or 96dpi. The lasersaur is optimized for these sizes. If you are saving a design through Inkscape, the dpi will be 90 as default. With Illustrator, it will be 72.</p>
+            <p>Any resolution for any photo or design you wish to cut will overload the laser if it is above 300 pixels. If you notice the lasersaur app isn’t loading you design, it might be because the resolution is TOO HIGH.</p>
+            <p>If you ever notice your design is coming through the laser at a different scale then intended, try clicking “import with optimizing” like in the photo below. If you don’t know the dpi of the design software you are using, you can usually find it under file, setting or preferences.</p>
+            <p><img src="/img/laser-upload-screenshot.png"></p>
+            <br>
+            <a name="connectionproblems"><h3>Problems Connecting</h3></a>
+            <br>
+            <p>First thing, make sure you are connected to the Wi-Fi connection with the Toronto Tool Library LAN network. The password is <strong>sharetools2013</strong></p>
+            <p>Open a browser and type in the address bar this IP address: <stong>192.168.2.199</stong></p>
+            <p>If that doesn't load, try typing: <strong>lasersaur.local</strong></p>
+            <p>If you are getting problems connecting and your screen looks like the picture below:</p>
+            <p><img src="/img/door-disconnected.png"></p>
+            <p>Or doesn’t display anything at all…. It means the laser’s computer has stalled or it needs more time to boot.</p>
+            <p>Wait 30 seconds and refresh your page. If there is still no connection, hit the emergency stop button (just a shut-off at this point) and wait 3 seconds, then twist it clockwise go start the laser again.</p>
+            <p>This will reset the lasersaur app and it should start working. If you still don’t have contact, try using another browser or computer.</p>
+            <br>
+            <a name="cuttingproblems"><h3>Problems Cutting</h3></a>
+            <br>
+            <p>If you seems to be unable to cut through any material, even at a low speed of 400-500 F (F=feederate in mm/min), then there is a small problem.</p>
+            <p>Check the following things before contacting any staff at the TTL.</p>
+            <ol><li>Is the power at %100?</li>
+            <li>Is your material very thick? Remember that ½” or 12.5mm is the maximum you can safely cut any material</li>
+            <li>Is your focus properly adjusted? (refer to focus adjustment) if not, make sure it’s in the centre of the material or at the top for acrylic cutting</li>
+            <li>Is the gantry aligned. Try realigning it by pushing the big red button on the right side (E-stop) and restarting the laser by rotating the E-stop clockwise. Wait 30 sec for the lasersaur app to re-boot and try cutting again.</li>
+            <li>Is the nozzle hot? If so, contact the TTL staff.</li></ol>
+            <br>            
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
+
+    <!-- speeds modal -->
+    <div id="speeds_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="about_label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="speeds_label">Cutting Speeds Guidelines</h3>
+        </div>
+        <div class="modal-body">
+            <table style="width:100%">
+                <tr>
+                    <td><strong>Material</strong></td>
+                    <td><strong>Thickness</strong></td>
+                    <td><strong>Feedrate (F)</strong></td>
+                    <td><strong>Power (%)</strong></td>
+                    <td><strong>Operator</strong></td>
+                </tr>
+                <tr>
+                    <td>Cardboard</td>
+                    <td>4 mm</td>
+                    <td>2000</td>
+                    <td>60</td>
+                    <td>Adam</td>
+                </tr>
+                <tr>
+                    <td>Plywood</td>
+                    <td>3/16"</td>
+                    <td>900</td>
+                    <td>100</td>
+                    <td>Adam</td>
+                </tr>
+                <tr>
+                    <td>Acrylic</td>
+                    <td>3/8"</td>
+                    <td>400</td>
+                    <td>100</td>
+                    <td>Adam</td>
+                </tr>
+                <tr>
+                    <td>Paper Board</td>
+                    <td>1 mm</td>
+                    <td>1500</td>
+                    <td>40</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Acrylic</td>
+                    <td>2 mm</td>
+                    <td>900</td>
+                    <td>60</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Birch Plywood</td>
+                    <td>1/4"</td>
+                    <td>500</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Particle Board</td>
+                    <td>1/2"</td>
+                    <td>400 x 2 Passes</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Acrylic</td>
+                    <td>1/8"</td>
+                    <td>700</td>
+                    <td>90</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Clear Acrylic</td>
+                    <td>1/16"</td>
+                    <td>1500</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>White Acrylic</td>
+                    <td>1/8"</td>
+                    <td>1500</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Black Acrylic</td>
+                    <td>1/8"</td>
+                    <td>900</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Cedar</td>
+                    <td>5/8"</td>
+                    <td>400</td>
+                    <td>100</td>
+                    <td>Rafal</td>
+                </tr>
+                <tr>
+                    <td>Blotting Paper</td>
+                    <td>1 mm</td>
+                    <td>2300</td>
+                    <td>28</td>
+                    <td>Cosmo</td>
+                </tr>
+                <tr>
+                    <td>Acrylic</td>
+                    <td>11 mm</td>
+                    <td>200</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Leather</td>
+                    <td>4 mm</td>
+                    <td>700</td>
+                    <td>80</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Acrylic</td>
+                    <td>3.5 mm</td>
+                    <td>900</td>
+                    <td>90</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Particle Board</td>
+                    <td>5/8"</td>
+                    <td>400 x 2 Passes</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>MDF</td>
+                    <td>2.2 mm</td>
+                    <td>650</td>
+                    <td>100</td>
+                    <td>Andrew</td>
+                </tr>
+                <tr>
+                    <td>MDF</td>
+                    <td>3/8"</td>
+                    <td>500 x 3 Passes</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Pine/Hemlock</td>
+                    <td>5/8"</td>
+                    <td>200+500</td>
+                    <td>100</td>
+                    <td>Vishal</td>
+                </tr>
+                <tr>
+                    <td>Hard Board</td>
+                    <td>1/4"</td>
+                    <td>600</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Delrin</td>
+                    <td>1/4"</td>
+                    <td>250</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+            </table>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
