@@ -12,7 +12,7 @@ from filereaders import read_svg, read_dxf, read_ngc
 
 
 APPNAME = "lasaurapp"
-VERSION = "14.01b"
+VERSION = "14.11"
 COMPANY_NAME = "com.nortd.labs"
 SERIAL_PORT = None
 BITSPERSECOND = 57600
@@ -82,6 +82,11 @@ class HackedWSGIRequestHandler(WSGIRequestHandler):
         # return "(a requester)"
         return str(self.client_address[0])
 
+    def log_request(*args, **kw):
+        # if debug:
+            # return wsgiref.simple_server.WSGIRequestHandler.log_request(*args, **kw)
+        pass
+
 
 def run_with_callback(host, port):
     """ Start a wsgiref server instance with control over the main loop.
@@ -118,10 +123,12 @@ def run_with_callback(host, port):
     except webbrowser.Error:
         print "Cannot open Webbrowser, please do so manually."
     sys.stdout.flush()  # make sure everything gets flushed
+    server.timeout = 0
     while 1:
         try:
             SerialManager.send_queue_as_ready()
             server.handle_request()
+            time.sleep(0.0004)
         except KeyboardInterrupt:
             break
     print "\nShutting down..."
@@ -130,12 +137,12 @@ def run_with_callback(host, port):
         
 
 
-@route('/longtest')
-def longtest_handler():
-    fp = open("longtest.ngc")
-    for line in fp:
-        SerialManager.queue_gcode_line(line)
-    return "Longtest queued."
+# @route('/longtest')
+# def longtest_handler():
+#     fp = open("longtest.ngc")
+#     for line in fp:
+#         SerialManager.queue_gcode_line(line)
+#     return "Longtest queued."
     
 
 
@@ -452,13 +459,11 @@ def reset_atmega_handler():
 def job_submit_handler():
     job_data = request.forms.get('job_data')
     if job_data and SerialManager.is_connected():
-        lines = job_data.split('\n')
-        print "Adding to queue %s lines" % len(lines)
-        for line in lines:
-            SerialManager.queue_gcode_line(line)
+        SerialManager.queue_gcode(job_data)
         return "__ok__"
     else:
         return "serial disconnected"
+
 
 @route('/queue_pct_done')
 def queue_pct_done_handler():
