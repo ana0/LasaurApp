@@ -29,18 +29,19 @@
 // build for new driveboard hardware
 #define DRIVEBOARD
 
-//#define V1401
+#define V1401
 
 #define BAUD_RATE 57600
 // #define DEBUG_IGNORE_SENSORS  // set for debugging
 
+// Adam - Changed steps/mm for correct machine movement
 
 #ifndef V1401
-  #define CONFIG_X_STEPS_PER_MM 33.26580370 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
+  #define CONFIG_X_STEPS_PER_MM 32.80839895 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
   #define CONFIG_Y_STEPS_PER_MM 90.90909090 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
   #define CONFIG_Z_STEPS_PER_MM 32.80839895 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
 #else
-  #define CONFIG_X_STEPS_PER_MM 33.26580370 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
+  #define CONFIG_X_STEPS_PER_MM 32.80839895 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
   #define CONFIG_Y_STEPS_PER_MM 90.90909090 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
   #define CONFIG_Z_STEPS_PER_MM 33.33333333 //microsteps/mm (no integers, e.g. use 80.0 instead of 80)
 #endif
@@ -49,8 +50,8 @@
 #define CONFIG_SEEKRATE 8000.0
 #define CONFIG_ACCELERATION 1800000.0 // mm/min^2, typically 1000000-8000000, divide by (60*60) to get mm/sec^2
 #define CONFIG_JUNCTION_DEVIATION 0.006 // mm
-#define CONFIG_X_ORIGIN_OFFSET 5.0  // mm, x-offset of table origin from physical home
-#define CONFIG_Y_ORIGIN_OFFSET 5.0  // mm, y-offset of table origin from physical home
+#define CONFIG_X_ORIGIN_OFFSET 7.0  // mm, x-offset of table origin from physical home
+#define CONFIG_Y_ORIGIN_OFFSET 7.0  // mm, y-offset of table origin from physical home
 #define CONFIG_Z_ORIGIN_OFFSET 0.0   // mm, z-offset of table origin from physical home
 #ifndef V1401
   #define CONFIG_INVERT_X_AXIS 0  // 0 is regular, 1 inverts the y direction
