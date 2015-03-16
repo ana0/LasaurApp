@@ -45,7 +45,7 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li><a href="#about_modal" data-toggle="modal">About</a></li>
-                        <li><a href="#ttl_modal" data-toggle="modal">TTL</a></li>  
+                        <li><a href="#ttl_modal" data-toggle="modal">Help</a></li>  
                         <li><a href="#speeds_modal" data-toggle="modal">Cutting Speeds</a></li>  
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
@@ -59,7 +59,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="flash_firmware">Flash Firmware (latest)</a></li>
+                                <!--<li><a href="flash_firmware">Flash Firmware (latest)</a></li>-->
                                 <li><a href="build_firmware">Build and Flash from Source</a></li>
                                 <li><a id="reset_atmega" href="reset_atmega">Reset Atmega (restarts firmware)</a></li>
                             </ul>
@@ -100,6 +100,7 @@
         </div>
         <div class="modal-body">
             <h3>Note – You cannot use the laser if you haven’t taken the maintenance workshop.</h3><br>
+            <h3>Help video found here https://www.youtube.com/watch?v=WbYeNyBV8MM</h3><br>
             <strong>Table of contents</strong>
             <ol><li><a href="#startingup">Starting Up</a></li>
             <li><a href="#startingajob">Starting a Job</a></li>
@@ -109,7 +110,7 @@
             <ol><li><a href="#connectionproblems">Problems connecting</a></li>
             <li><a href="#cuttingproblems">Problems with cutting</a></li></ol>
             <br>
-            <a name="startingup"><h3>Starting Up</h3></a>
+            <a name="startingup"><h3>Starting Up (watch video https://www.youtube.com/watch?v=WbYeNyBV8MM)</h3></a>
             <br>
             <p>Make sure you turn on the laser and the FAN before anything else. This is done with the plug on the “vortex” fan in the back workshop being plugged in and the power bar to the right of the laser being turned on. Red emergency button should be pressed in for this.</p>
             <p>Make sure to “ZERO” the x-axis bar or gantry into the back when the laser is OFF, meaning no lights are on. When you are ready, keep your left hand on the x-axis bar and rotate the emergency button clockwise to turn on the laser cutter. That should zero the laser and make sure it cuts properly.</p>
@@ -150,7 +151,8 @@
             <p>Make sure the button “move” is selected at the bottom of the “Move/Job” tab when making an offset move. Offset move means that you are offsetting the “ZERO” from the top left corner to a location more desirable.</p>
             <p>Notice in the picture below the dotted lines indicate the new edge for both top and left side of the cutting area:</p>
             <p><img src="/img/offset.png"></p>
-            <p>When clicking or using the directional pad to get you the desired area, you will need to select “offset to” which looks like this:</p>
+            <p>Alternatively, you can use the "d-pad" or directional pad on your computer to move the laser's head from right to left , down and up.</p>
+            <p>Each movement is 10mm of movement. For fine movement you can hold ALT or Option and the head will move 2mm instead. When clicking or using the directional pad to get you the desired area, you will need to select “offset to” which looks like this:</p>
             <p><img src="/img/offset-button.png"></p>
             <p>Only click after the lens has reached the desired position and waited 5 seconds. This is a necessary update time for the laser.</p>
             <br>
@@ -210,14 +212,30 @@
                     <td>60</td>
                     <td>Adam</td>
                 </tr>
+	
                 <tr>
                     <td>Plywood</td>
                     <td>3/16"</td>
-                    <td>900</td>
+                    <td>600</td>
                     <td>100</td>
                     <td>Adam</td>
                 </tr>
+        
                 <tr>
+                    <td>Plywood</td>
+                    <td>1/8"</td>
+                    <td>700</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>matbaord</td>
+                    <td>1mm</td>
+                    <td>2000</td>
+                    <td>60</td>
+                    <td>Rory</td>
+                </tr>
+	        <tr>
                     <td>Acrylic</td>
                     <td>3/8"</td>
                     <td>400</td>
@@ -238,6 +256,27 @@
                     <td>60</td>
                     <td>Rory</td>
                 </tr>
+                 <tr>
+                    <td>Acrylic</td>
+                    <td>6 mm</td>
+                    <td>350</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                <tr>
+                    <td>Clear Acrylic</td>
+                    <td>14 mm</td>
+                    <td>300 x 2 passes</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>  
+                 <tr>
+                    <td>Tinted Acrylic</td>
+                    <td>6 mm</td>
+                    <td>350</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr> 
                 <tr>
                     <td>Birch Plywood</td>
                     <td>1/4"</td>
@@ -449,7 +488,12 @@
                                         </div>
                                         <div id="progressbar" class="progress progress-striped" style="margin-top:70px; clear:both">
                                             <div class="bar" style="width:0%;"></div>
+                                            <div id="percentageDisplay">
+  												Current Percentage: <b><span id="percentAmount">0</span></b>%
+                                        	</div>
                                         </div>
+            
+                                        
                                     </div>
                                     <button id="clear_queue" class="btn btn-mini pull-right" title="delete non-starred jobs" data-delay="500">
                                         clear
@@ -482,11 +526,11 @@
                                             </button>
                                         <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu">
-                                            <li><a id="svg_import_72_btn" href="#">Import 72dpi SVG</a></li>
-                                            <li><a id="svg_import_90_btn" href="#">Import 90dpi SVG</a></li>
+                                            <li><a id="svg_import_72_btn" href="#">Import 72dpi SVG(Illistrator)</a></li>
+                                            <li><a id="svg_import_90_btn" href="#">Import 90dpi SVG(inkscape)</a></li>
                                             <li><a id="svg_import_96_btn" href="#">Import 96dpi SVG</a></li>
                                                 <li class="divider"></li>
-                                            <li><a id="svg_import_nop_btn" href="#">Import without Optimizing</a></li>
+                                            <li><a id="svg_import_nop_btn" href="#">Import for hatchfilling</a></li>
                                         </ul>
                                     </div>
                                         <div id="dpi_import_info" class="pull-left" style="margin:10px"></div>
