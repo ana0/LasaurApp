@@ -59,7 +59,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <!--<li><a href="flash_firmware">Flash Firmware (latest)</a></li>-->
+                                <!--<li><a href="flash_firmware">Flash Firmware (latest from github)</a></li>-->
                                 <li><a href="build_firmware">Build and Flash from Source</a></li>
                                 <li><a id="reset_atmega" href="reset_atmega">Reset Atmega (restarts firmware)</a></li>
                             </ul>
@@ -100,7 +100,8 @@
         </div>
         <div class="modal-body">
             <h3>Note – You cannot use the laser if you haven’t taken the maintenance workshop.</h3><br>
-            <h3>Help video found here https://www.youtube.com/watch?v=WbYeNyBV8MM</h3><br>
+            <h3>Help video found <a href="https://www.youtube.com/watch?v=WbYeNyBV8MM"</a></b3>Here</a></h3>
+            <h3>Also read this for general laser knowledge <a href="http://www.instructables.com/id/10-Tips-and-Tricks-for-Laser-Engraving-and-Cutting/step7/Tip-7-Adding-a-vector-score-to-the-edge-of-type-or/"</a></b3>here</a></h3> 
             <strong>Table of contents</strong>
             <ol><li><a href="#startingup">Starting Up</a></li>
             <li><a href="#startingajob">Starting a Job</a></li>
@@ -110,12 +111,12 @@
             <ol><li><a href="#connectionproblems">Problems connecting</a></li>
             <li><a href="#cuttingproblems">Problems with cutting</a></li></ol>
             <br>
-            <a name="startingup"><h3>Starting Up (watch video https://www.youtube.com/watch?v=WbYeNyBV8MM)</h3></a>
+            <a name="startingup"><h3>Starting Up</h3></a>
             <br>
-            <p>Make sure you turn on the laser and the FAN before anything else. This is done with the plug on the “vortex” fan in the back workshop being plugged in and the power bar to the right of the laser being turned on. Red emergency button should be pressed in for this.</p>
-            <p>Make sure to “ZERO” the x-axis bar or gantry into the back when the laser is OFF, meaning no lights are on. When you are ready, keep your left hand on the x-axis bar and rotate the emergency button clockwise to turn on the laser cutter. That should zero the laser and make sure it cuts properly.</p>
+            <p>Make sure you turn on the laser and the FAN before anything else. This is done with the plug on the “vortex” fan in the back workshop being plugged in and the power bar to the right of the laser being turned on.</p>
+            <p>Also rotate the emergency button clockwise to turn on the lasersaur's motors and lights.</p>
             <p>Next, open your laptop and access you browser, i.e. Firefox, chrome, explorer, safari, etc. (NOTE* safari cannot run the lasersaur app in most cases because it doesn’t have API capabilities… Don’t ask)</p>
-            <p>Login to the Laser with the IP address <strong>192.168.2.199</strong> typed into the address bar.</p>
+            <p>Login to the Laser with the IP address <strong>192.168.2.199</strong> or <strong>lasersaur.local</strong> typed into the address bar.</p>
             <p>Should look like this:</p>
             <p><img src="/img/laserapp-screenshot.png"></p>
             <p><img src="/img/door-disconnected.png"></p>
@@ -180,9 +181,9 @@
             <p>Check the following things before contacting any staff at the TTL.</p>
             <ol><li>Is the power at %100?</li>
             <li>Is your material very thick? Remember that ½” or 12.5mm is the maximum you can safely cut any material</li>
-            <li>Is your focus properly adjusted? (refer to focus adjustment) if not, make sure it’s in the centre of the material or at the top for acrylic cutting</li>
-            <li>Is the gantry aligned. Try realigning it by pushing the big red button on the right side (E-stop) and restarting the laser by rotating the E-stop clockwise. Wait 30 sec for the lasersaur app to re-boot and try cutting again.</li>
-            <li>Is the nozzle hot? If so, contact the TTL staff.</li></ol>
+            <li>Is your focus properly adjusted? (refer to focus adjustment or click <a href="https://www.youtube.com/watch?v=wvyWbFlio3E"</a></b3>Here</a></h3> ) if not, make sure it’s in the centre of the material or at the top for acrylic cutting</li>
+            <li>Is the gantry aligned. Try realigning it by pushing the big red button on the right side (E-stop), then pcushing the centre aluminum bar to the back as far as it goes and finally restarting the laser by rotating the E-stop clockwise. Wait 30 sec for the lasersaur app to re-boot and try cutting again.</li>
+            <li>Is the nozzle where the laser comes out of hot? If so, contact the TTL staff.</li></ol>
             <br>            
         </div>
         <div class="modal-footer">
@@ -220,7 +221,13 @@
                     <td>100</td>
                     <td>Adam</td>
                 </tr>
-        
+                 <tr>
+                    <td>paper stock</td>
+                    <td>1mm</td>
+                    <td>2000</td>
+                    <td>90</td>
+                    <td>Rory</td>
+                </tr>        
                 <tr>
                     <td>Plywood</td>
                     <td>1/8"</td>
@@ -235,10 +242,17 @@
                     <td>60</td>
                     <td>Rory</td>
                 </tr>
+                 <tr>
+                    <td>hardborad</td>
+                    <td>6mm</td>
+                    <td>300</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
 	        <tr>
                     <td>Acrylic</td>
                     <td>3/8"</td>
-                    <td>400</td>
+                    <td>200</td>
                     <td>100</td>
                     <td>Adam</td>
                 </tr>
@@ -271,6 +285,13 @@
                     <td>Rory</td>
                 </tr>  
                  <tr>
+                    <td>Clear Acrylic</td>
+                    <td>5.6 mm</td>
+                    <td>350</td>
+                    <td>100</td>
+                    <td>Rory</td>
+                </tr>
+                 <tr>
                     <td>Tinted Acrylic</td>
                     <td>6 mm</td>
                     <td>350</td>
@@ -280,7 +301,7 @@
                 <tr>
                     <td>Birch Plywood</td>
                     <td>1/4"</td>
-                    <td>500</td>
+                    <td>400</td>
                     <td>100</td>
                     <td>Rory</td>
                 </tr>
@@ -651,7 +672,58 @@
                                     <!-- log -->
                                 </div>
                             </div> <!-- end of log tab -->
+<!--  START   CUSTOM GCODE TAB -->
+                            <div id='tab_gcode' class='tab-pane'>
+                                <div id='gcode_content'>
+                                    <textarea id='gcode_edit' style='clear:both; width: 900px;' rows=20></textarea>
+                                    <button id="gcode_submit" class="btn btn-large btn-primary">Send to Lasersaur</button>
+                                </div>
+                            </div>
 
+                            <script>
+                var chunksize = 5000;
+                var gqueue = Array();
+                function queue_gcode(gcode){
+                    var tmp = gcode.split("\n");
+                    var chunk = "";
+                    var lc = 0;
+                    for (var i=0; i<tmp.length; i++){
+                        lc++;
+                        chunk += tmp[i]+"\n";
+                        if (lc>=chunksize){
+                            gqueue.push(chunk);
+                            lc=0;
+                            chunk=""
+                        }   
+                    }
+                    if (chunk.length>0){ gqueue.push(chunk); }  
+                }
+
+                function process_gcode_queue(){
+
+                    if (progress_not_yet_done_flag==false && gqueue.length > 0){
+                        gcode = gqueue.shift();
+                        progress_not_yet_done_flag=true;
+                        send_gcode(gcode, "New Chunk from Queue Sent.", true);  
+                    }
+                    setTimeout("process_gcode_queue()",5000);   
+                }
+                setTimeout("process_gcode_queue()",5000);
+
+                $("#cancel_btn").click(function(e){
+                    gqueue = Array();
+                });
+
+                                $('.tabs-left ul').append('<li><a href="#tab_gcode" id="tab_gcode_button" data-toggle="tab"><i class="icon-exclamation-sign" style="margin-right:2px"></i> Gcode</a></li>');
+                                $("#gcode_submit").click(function(e) {
+                                    var gcode = $('#gcode_edit').val();
+                                    if (gcode){
+                                        //send_gcode(gcode, "G-Code sent to backend.", true);
+                                        queue_gcode(gcode); 
+                    }
+                                });
+                            </script>
+                            <!-- END      CUSTOM GCODE TAB -->
                             <!--content end-->
                         </div>
                     </div>
