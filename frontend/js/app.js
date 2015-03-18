@@ -69,6 +69,7 @@ function send_gcode(gcode, success_msg, progress) {
               if ($("#progressbar").children().first().width() == 0) {
                 $("#progressbar").children().first().width('5%');
                 $("#progressbar").show();
+                $("#percentageDisplay").show();
                 progress_not_yet_done_flag = true;
                 setTimeout(update_progress, 2000);
               }
@@ -98,12 +99,14 @@ function update_progress() {
     if (data.length > 0) {
       var pct = parseInt(data);
       $("#progressbar").children().first().width(pct+'%');
+    	$("#percentageDisplay #percentAmount").html(pct);
       setTimeout(update_progress, 2000);         
     } else {
       if (progress_not_yet_done_flag) {
         $("#progressbar").children().first().width('100%');
         $().uxmessage('notice', "Done.");
         progress_not_yet_done_flag = false;
+        $("#percentageDisplay #percentAmount").html("100");
         setTimeout(update_progress, 2000);
       } else {
         $('#progressbar').hide();
